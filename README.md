@@ -29,8 +29,6 @@ git clone https://github.com/BigHero76/ema-crossover.git
 cd ema-crossover
 Create a virtual environment (recommended):
 
-bash
-Copy code
 # Windows
 python -m venv venv_new
 venv_new\Scripts\activate
@@ -38,29 +36,23 @@ venv_new\Scripts\activate
 # macOS / Linux
 python3 -m venv venv_new
 source venv_new/bin/activate
+
 Install dependencies:
 
-bash
-Copy code
 pip install -r requirements.txt
+
 Your requirements.txt should include:
 
-makefile
-Copy code
 pandas==2.0.3
 numpy==1.26.4
 yfinance
 matplotlib
-Usage
-Run the script using:
 
-bash
-Copy code
+Run the script using:
 python ema.py
+
 Edit the variables in ema.py to test different stocks and EMA periods:
 
-python
-Copy code
 stock_symbol = "AAPL"
 fast_ema_period = 10
 slow_ema_period = 30
