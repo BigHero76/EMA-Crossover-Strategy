@@ -65,4 +65,7 @@ Red v markers indicate sell signals.
 
 Orange and Purple lines are fast EMA and slow EMA, respectively.
 
+![EMA Crossover Plot](ema_plot.png)
+
+
 
