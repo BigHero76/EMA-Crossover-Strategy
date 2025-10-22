@@ -9,7 +9,7 @@ A Python script to implement and visualize an **Exponential Moving Average (EMA)
 - Calculates fast and slow EMAs
 - Generates buy/sell signals based on EMA crossovers
 - Visualizes stock price, EMAs, and signals using `matplotlib`
-- Easy to modify for any stock symbol and date range
+- Easy to modify for any stock symbol and date range 
 
 ---
 
@@ -65,7 +65,6 @@ Red v markers indicate sell signals.
 
 Orange and Purple lines are fast EMA and slow EMA, respectively.
 
-![EMA Crossover Plot](ema_plot.png)
 
 
 
