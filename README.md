@@ -27,9 +27,10 @@ However, using `yfinance`, historical stock data can be fetched for **any stock 
 ```bash
 git clone https://github.com/BigHero76/ema-crossover.git
 cd ema-crossover
-
 Create a virtual environment (recommended):
 
+bash
+Copy code
 # Windows
 python -m venv venv_new
 venv_new\Scripts\activate
@@ -37,34 +38,39 @@ venv_new\Scripts\activate
 # macOS / Linux
 python3 -m venv venv_new
 source venv_new/bin/activate
-
 Install dependencies:
 
+bash
+Copy code
 pip install -r requirements.txt
 Your requirements.txt should include:
 
+makefile
+Copy code
 pandas==2.0.3
 numpy==1.26.4
 yfinance
 matplotlib
-
-Usage: 
+Usage
 Run the script using:
 
+bash
+Copy code
 python ema.py
 Edit the variables in ema.py to test different stocks and EMA periods:
 
+python
+Copy code
 stock_symbol = "AAPL"
 fast_ema_period = 10
 slow_ema_period = 30
-
 The script will generate a plot showing buy/sell signals, save it as ema_plot.png, and print the signal table in the terminal.
 
 Example Output
-
 Green ^ markers indicate buy signals.
 
 Red v markers indicate sell signals.
 
 Orange and Purple lines are fast EMA and slow EMA, respectively.
+
 
