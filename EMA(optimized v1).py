@@ -80,3 +80,4 @@ if __name__ == "__main__":
 
     print("\n📈 Trade Signals:")
     print(result_df[result_df['Signal'] != 0][['Close', f'EMA_Fast_10', f'EMA_Slow_30', 'RSI', 'MACD', 'MACD_Signal', 'Signal']])
+
