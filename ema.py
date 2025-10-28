@@ -24,7 +24,7 @@ if __name__ == "__main__":
     slow_ema_period = 30
     result_df = ema_crossover_strategy(data.copy(), fast_ema_period, slow_ema_period)
 
-    # Plot
+    #graph plotting
     plt.figure(figsize=(14, 7))
     plt.plot(result_df.index, result_df['Close'], label='Close Price', alpha=0.7)
     plt.plot(result_df.index, result_df[f'EMA_Fast_{fast_ema_period}'], label=f'EMA Fast ({fast_ema_period})', color='orange')
