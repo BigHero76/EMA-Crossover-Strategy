@@ -53,7 +53,10 @@ Buy-and-hold cumulative returns
 
 The plot below visualizes the relative performance.
 
-<img width="1389" height="690" alt="download" src="https://github.com/user-attachments/assets/dc2b2355-af63-413c-b20a-5b17fb22503b" />
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/dc2b2355-af63-413c-b20a-5b17fb22503b" alt="EMA Strategy Chart" width="800"/>
+</p>
+
 
 
 🧰 Tech Stack
