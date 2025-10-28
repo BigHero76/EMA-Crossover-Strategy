@@ -53,12 +53,8 @@ Buy-and-hold cumulative returns
 
 The plot below visualizes the relative performance.
 
-🖼️ Example Output Graphs
-Chart	Description
-Price with Fast/Slow EMA and Buy/Sell signals
-Strategy vs Buy & Hold returns
+C:\Users\Chandra Sekhar\Downloads\download.png
 
-(You can replace images/... with your actual file paths in the repo.)
 
 🧰 Tech Stack
 Python 3.x
