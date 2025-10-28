@@ -1,104 +1,56 @@
-# 📊 EMA Crossover Strategy with RSI/MACD Optimization
+# 📈 EMA Crossover Strategy (with RSI + MACD Optimization)
 
-## 🧠 Overview
-This project implements a **technical trading strategy** based on the **Exponential Moving Average (EMA) crossover**, enhanced with **RSI and MACD confirmations** for more reliable entry and exit signals.  
-It automatically fetches stock data, calculates technical indicators, and visualizes buy/sell decisions on a price chart.  
-Backtesting is included to compare performance against a simple buy-and-hold benchmark.
+This project implements a trading strategy that combines **Exponential Moving Average (EMA)** crossovers with **RSI** and **MACD** confirmations to generate buy/sell signals.  
+The strategy is tested and visualized using **Python**, **pandas**, **matplotlib**, and **yfinance**.
+
+---
+
+## 🧠 Strategy Overview
+
+### 🔹 Core Concept:
+- The **EMA Crossover Strategy** looks for moments when a **short-term EMA** crosses a **long-term EMA**:
+  - **Buy Signal** → Fast EMA crosses *above* Slow EMA  
+  - **Sell Signal** → Fast EMA crosses *below* Slow EMA
+
+### 🔹 RSI + MACD Optimization:
+To reduce false signals and improve entry accuracy:
+- **RSI (Relative Strength Index)**  
+  - Filters overbought (>70) and oversold (<30) regions  
+  - We only take buy signals when RSI < 70  
+  - And sell signals when RSI > 30  
+- **MACD (Moving Average Convergence Divergence)**  
+  - Confirms momentum direction  
+  - Buy only if MACD > MACD Signal  
+  - Sell only if MACD < MACD Signal  
+
+This combination ensures the trade aligns with **momentum and trend strength**, not just EMA crosses.
 
 ---
 
 ## ⚙️ Features
-- Fetches live historical data using **Yahoo Finance (`yfinance`)**
-- Calculates **Fast EMA** and **Slow EMA** for crossover detection
-- Integrates **RSI (Relative Strength Index)** and **MACD (Moving Average Convergence Divergence)** for signal filtering
-- Generates **buy/sell signals** only when multiple confirmations align
-- Includes **backtesting engine** to calculate returns
-- Plots comparison chart between **strategy returns** and **buy-and-hold returns**
+✅ Fetches stock data automatically using [yfinance](https://pypi.org/project/yfinance/)  
+✅ Calculates **EMA**, **RSI**, and **MACD** using [ta](https://technical-analysis-library-in-python.readthedocs.io/en/latest/)  
+✅ Generates **buy/sell markers** on the price chart  
+✅ Backtests against a **Buy & Hold** baseline  
+✅ Saves the result plots locally for analysis  
 
 ---
 
-## 🧩 Strategy Logic
-
-### 1. **EMA Crossover**
-- **Buy Signal:** Fast EMA crosses **above** Slow EMA  
-- **Sell Signal:** Fast EMA crosses **below** Slow EMA  
-
-### 2. **RSI + MACD Optimization**
-To reduce false positives, the raw EMA crossover signals are filtered using RSI and MACD confirmations:
-
-#### **RSI Optimization**
-- RSI acts as a **momentum gauge**.  
-- A buy is **only valid** if RSI < 60 → price isn’t overbought yet, giving room for upside.  
-- A sell is **only valid** if RSI > 40 → price isn’t oversold yet, confirming potential downside.  
-- These thresholds (60/40) are optimized after multiple runs to find a stable balance between early entries and avoiding whipsaws.
-
-#### **MACD Optimization**
-- MACD gives a **trend strength confirmation**.  
-- Buy only when **MACD > Signal Line** → bullish momentum building.  
-- Sell only when **MACD < Signal Line** → bearish shift.  
-- The combination ensures trades occur **only during strong, sustained trends**, not during noise.
-
-#### **Combined Confirmation**
-The final trade trigger happens when:
-```text
-EMA Crossover + RSI Confirmation + MACD Confirmation
-This multi-filter approach significantly improves accuracy compared to standalone EMA signals.
-
-📈 Backtesting
-Backtesting is performed over a chosen date range to compare:
-
-Strategy cumulative returns
-
-Buy-and-hold cumulative returns
-
-The plot below visualizes the relative performance.
+## 📊 Sample Output
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/dc2b2355-af63-413c-b20a-5b17fb22503b" alt="EMA Strategy Chart" width="800"/>
+  <img src="https://github.com/user-attachments/assets/dc2b2355-af63-413c-b20a-5b17fb22503b" alt="EMA RSI MACD Strategy Chart" width="850"/>
 </p>
 
+> 🟢 **Green Arrows** = Buy signals  
+> 🔴 **Red Arrows** = Sell signals  
+> Orange/Purple lines = Fast and Slow EMAs respectively  
 
+---
 
-🧰 Tech Stack
-Python 3.x
-
-pandas, numpy
-
-matplotlib, yfinance
-
-ta (Technical Analysis library)
-
-🚀 How to Run
-bash
-Copy code
-git clone https://github.com/<your-username>/ema-rsi-macd-strategy.git
-cd ema-rsi-macd-strategy
-pip install -r requirements.txt
-python strategy.py
-📊 Output Example
-Blue Line: Stock Close Price
-
-Orange Line: Fast EMA
-
-Purple Line: Slow EMA
-
-Green Triangles: Buy signals
-
-Red Triangles: Sell signals
-
-🔧 Optimization Insights
-The RSI and MACD thresholds were tuned by backtesting multiple configurations:
-
-Parameter	Range Tested	Optimal Value
-RSI upper threshold	55–70	60
-RSI lower threshold	30–45	40
-MACD smoothing	(12, 26, 9)	Default performed best
-
-📈 Future Improvements
-Integrate hyperparameter tuning (grid search or Bayesian optimization)
-
-Apply machine learning classifiers (Random Forest / XGBoost) to learn optimal signal patterns
-
-Build an interactive Streamlit dashboard
-
-Add portfolio risk metrics (Sharpe ratio, drawdown, volatility)
+## 📈 Performance Summary (Example)
+| Metric | Result |
+|:--------|:--------|
+| Strategy Return | 42.57% |
+| Buy & Hold Return | 25.31% |
+| Optimization Filters | RSI + MACD Confirmation |
