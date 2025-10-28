@@ -53,7 +53,7 @@ Buy-and-hold cumulative returns
 
 The plot below visualizes the relative performance.
 
-C:\Users\Chandra Sekhar\Downloads\download.png
+<img width="1389" height="690" alt="download" src="https://github.com/user-attachments/assets/dc2b2355-af63-413c-b20a-5b17fb22503b" />
 
 
 🧰 Tech Stack
