@@ -1,70 +1,86 @@
-# EMA Crossover Strategy with Python
+# 📈 EMA + RSI + MACD Crossover Strategy
 
-A Python script to implement and visualize an **Exponential Moving Average (EMA) crossover trading strategy** using historical stock data from Yahoo Finance.
+This project implements a **technical trading strategy** that combines:
+- **Exponential Moving Averages (EMA)** for trend detection  
+- **Relative Strength Index (RSI)** for momentum filtering  
+- **Moving Average Convergence Divergence (MACD)** for confirmation signals  
 
----
-
-## Features
-- Fetches historical stock data with `yfinance`
-- Calculates fast and slow EMAs
-- Generates buy/sell signals based on EMA crossovers
-- Visualizes stock price, EMAs, and signals using `matplotlib`
-- Easy to modify for any stock symbol and date range 
+The model was tested using **AAPL stock data (2023–2025)** via the `yfinance` API.
 
 ---
 
-## Stock Reference
+## 🧠 Strategy Logic
 
-In this project, **Apple Inc. (AAPL)** stock is used as a reference for the period **January 2023 to January 2025**.  
-However, using `yfinance`, historical stock data can be fetched for **any stock symbol and time period**, making this strategy easily adaptable.
+The base of the strategy is the **EMA crossover**:
+- **Buy Signal** → when the **Fast EMA** crosses **above** the Slow EMA.  
+- **Sell Signal** → when the **Fast EMA** crosses **below** the Slow EMA.  
+
+To reduce false positives, we optimize entries with **RSI** and **MACD** conditions:
+- **RSI (Relative Strength Index)** must be **above 45** during a buy (confirming upward momentum).  
+- **MACD** value must be **positive** during a buy and **negative** during a sell, confirming trend strength.  
+
+This hybrid approach filters out weak crossovers that often appear in ranging markets.
 
 ---
 
-## Installation
+## 🧩 Indicators Used
 
-1. Clone the repository:
+| Indicator | Period | Purpose |
+|------------|---------|----------|
+| EMA (Fast) | 10 | Captures short-term momentum |
+| EMA (Slow) | 30 | Captures long-term trend |
+| RSI | 14 | Measures overbought/oversold zones |
+| MACD | 12, 26, 9 | Confirms strength of price movement |
 
-```bash
-git clone https://github.com/BigHero76/ema-crossover.git
-cd ema-crossover
-Create a virtual environment (recommended):
+---
 
-# Windows
-python -m venv venv_new
-venv_new\Scripts\activate
+## 📊 Backtest Summary
 
-# macOS / Linux
-python3 -m venv venv_new
-source venv_new/bin/activate
+**Performance Summary:**
+- 📈 Strategy Return: **4.87%**  
+- 💼 Buy & Hold Return: **102.33%**
 
-Install dependencies:
+While buy-and-hold outperformed in this long bull trend, the **EMA + RSI + MACD** hybrid model provides **structured entry/exit signals**, useful in volatile or sideways markets.
 
-pip install -r requirements.txt
+---
 
-Your requirements.txt should include:
+## 🪙 Sample Trade Signals
 
-pandas==2.0.3
-numpy==1.26.4
-yfinance
-matplotlib
+| Date | Price | RSI | MACD | Signal |
+|------|--------|-----|------|--------|
+| 2023-09-01 | 187.62 | 62.11 | 0.085 | 🟢 Buy |
+| 2023-10-12 | 178.95 | 58.39 | -0.087 | 🔴 Sell |
+| 2024-01-23 | 195.28 | 68.10 | 0.183 | 🟢 Buy |
+| 2024-06-18 | 205.97 | 66.43 | -0.131 | 🔴 Sell |
+| 2024-09-05 | 215.32 | 59.14 | 0.258 | 🟢 Buy |
+| 2024-11-21 | 227.71 | 52.53 | -0.064 | 🔴 Sell |
 
-Run the script using:
-python ema.py
+*(Signals derived from EMA crossovers validated by RSI and MACD values.)*
 
-Edit the variables in ema.py to test different stocks and EMA periods:
+---
 
-stock_symbol = "AAPL"
-fast_ema_period = 10
-slow_ema_period = 30
-The script will generate a plot showing buy/sell signals, save it as ema_plot.png, and print the signal table in the terminal.
+## 🖼️ Visualization
 
-Example Output
-Green ^ markers indicate buy signals.
+The below figure shows:
+- Fast and Slow EMAs  
+- Buy/Sell markers  
+- Trade signal data  
+- Strategy vs. Buy & Hold comparison  
 
-Red v markers indicate sell signals.
+<img width="700" alt="EMA_RSI_MACD_Strategy" src="https://github.com/user-attachments/assets/dc2b2355-af63-413c-b20a-5b17fb22503b" />
 
-Orange and Purple lines are fast EMA and slow EMA, respectively.
+---
 
+## ⚙️ Tech Stack
 
+- **Language:** Python  
+- **Libraries:** `pandas`, `matplotlib`, `ta`, `yfinance`   
 
+---
 
+## 🚀 Possible Extensions
+
+- Machine Learning–based signal optimization  
+- Parameter tuning using **Grid Search / Bayesian Optimization**  
+- Integration with live trading APIs (Zerodha, Alpaca, etc.)  
+- Portfolio-level backtesting  
